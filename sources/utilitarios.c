@@ -3,7 +3,7 @@
 int leituraArquivo(TipoApontador *cav) {
     FILE *arq;
 
-    arq = fopen("../cavernas/caverna1.txt", "r");
+    arq = fopen("./cavernas/caverna1.txt", "r");
 
     if (arq == NULL) {
         printf("Deu merda na leitura");
