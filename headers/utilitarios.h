@@ -3,6 +3,6 @@
 
 #include "caverna.h"
 
-int leituraArquivo(TipoApontador *cav);
+int leituraArquivo(TipoApontadorCaverna *cav);
 
 #endif

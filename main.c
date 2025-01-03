@@ -1,13 +1,16 @@
 #include "headers/includes.h"
 
 int main() {
-    TipoApontador caverna;
+    TipoApontadorCaverna caverna;
+    TipoApontadorTabela tabela;
 
     int leitura = leituraArquivo(&caverna);
 
     if (leitura) {
-		MostrarCaverna(&caverna);
-	}	
+        inicializaTabela(&caverna, &tabela);
+        movimentaEstudante(&caverna, &tabela);
+        MostrarCaverna(&caverna);
+    }
 
     return 0;
 }

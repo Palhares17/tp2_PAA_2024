@@ -1,36 +1,58 @@
 #include "../headers/includes.h"
 
-int leituraArquivo(TipoApontador *cav) {
+int leituraArquivo(TipoApontadorCaverna *cav) {
     FILE *arq;
 
+    // Abrindo o arquivo
     arq = fopen("./cavernas/caverna1.txt", "r");
-
     if (arq == NULL) {
-        printf("Deu merda na leitura");
+        printf("Erro ao abrir o arquivo.\n");
         return 0;
     }
 
     int linhas, colunas, vidas;
 
-    fscanf(arq, "%d %d %d", &linhas, &colunas, &vidas);
+    // Lendo as dimensões e os pontos de vida iniciais
+    if (fscanf(arq, "%d %d %d", &linhas, &colunas, &vidas) != 3) {
+        printf("Erro ao ler as dimensões ou os pontos de vida.\n");
+        fclose(arq);
+        return 0;
+    }
 
+    // Aloca memória para a estrutura TipoCaverna
+    *cav = (TipoApontadorCaverna)malloc(sizeof(TipoCaverna));
+    if (*cav == NULL) {
+        perror("Erro ao alocar memória para caverna");
+        fclose(arq);
+        return 0;
+    }
+
+    // Inicializando a caverna
     InicializaCaverna(cav, linhas, colunas, vidas);
 
-    char entrada[(*cav)->qtdColunas + 1];
+    char entrada[10];  // Buffer para leitura de cada célula
 
+    // Lendo os valores da matriz
     for (int i = 0; i < (*cav)->qtdLinhas; i++) {
-        if (fscanf(arq, "%s", entrada) != 1) {
-            printf("Erro ao ler a linha %d do caverna\n", i);
-            fclose(arq);
-        }
-
-        // Converte os caracteres da string para inteiros
         for (int j = 0; j < (*cav)->qtdColunas; j++) {
-            (*cav)->caverna[i][j] = entrada[j] - '0';
+            if (fscanf(arq, "%s", entrada) != 1) {
+                printf("Erro ao ler a célula [%d][%d].\n", i, j);
+                fclose(arq);
+                return 0;
+            }
+
+            // Processando valores especiais ou numéricos
+            if (strcmp(entrada, "F") == 0) {
+                (*cav)->caverna[i][j] = 99;  // Representa a saída
+            } else if (strcmp(entrada, "I") == 0) {
+                (*cav)->caverna[i][j] = -99;  // Representa o início
+            } else {
+                // Convertendo a string numérica para inteiro
+                (*cav)->caverna[i][j] = atoi(entrada);
+            }
         }
     }
 
     fclose(arq);
-
     return 1;
 }

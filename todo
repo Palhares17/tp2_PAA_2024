@@ -1,0 +1,20 @@
+- Trabalho:
+  [x] Leitura de arquivo.
+  [ ] Criar entrada de arquivos.
+  [x] Criar matriz de caverna.
+  [ ] Fazer movimentação do estudante (Programação Dinâmica).
+  [ ] Gerar arquivo de saída.
+  [ ] Criar menu.
+  [ ] Fazer o limpa tela.
+
+- Extras:
+  [ ] 1. Utilizar heurísticas para acelerar a busca.
+  [ ] 2. Explicar como fazer a utilização de andar para todos os caminhos. (norte, sul, leste e oeste)
+  [ ] 3. Criar outras opções.
+  [ ] 4. Gerar programa de criação de caverna.
+  [ ] 5. Plotar gráfico de complexidade x tempo.
+
+- Anotações:
+* Você só pode se movimentar para cima ou para esquerda.
+
+
