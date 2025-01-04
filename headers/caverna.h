@@ -18,5 +18,6 @@ void InicializaCaverna(TipoApontadorCaverna *cav, int linha, int coluna, int vid
 void inicializaTabela(TipoApontadorCaverna *cav, TipoApontadorTabela *tabela);
 void movimentaEstudante(TipoApontadorCaverna *cav, TipoApontadorTabela *tabela);
 void MostrarCaverna(TipoApontadorCaverna *cav);
+void MostrarTabela(TipoApontadorCaverna tabela);
 
 #endif

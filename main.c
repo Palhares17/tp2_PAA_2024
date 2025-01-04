@@ -12,5 +12,7 @@ int main() {
         MostrarCaverna(&caverna);
     }
 
+	MostrarTabela(tabela);
+
     return 0;
 }
